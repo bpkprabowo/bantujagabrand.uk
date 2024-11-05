@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            background-color: #000000;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: Arial, sans-serif;
+            overflow: hidden;
+        }
+
+        .scene {
+            text-align: center;
+        }
+
+        .raindrop {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.7);
+            width: 2px;
+            height: 20px;
+            animation: fall linear;
+            bottom: 100%;
+        }
+
+        @keyframes fall {
+            0% {
+                transform: translateY(0);
+            }
+            100% {
+                transform: translateY(100vh);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="scene">
+        <h1></h1>
+        <p></p>
+    </div>
+
+    <script>
+        const createRaindrop = () => {
+            const raindrop = document.createElement('div');
+            raindrop.classList.add('raindrop');
+            raindrop.style.left = Math.random() * 100 + 'vw';
+            raindrop.style.animationDuration = Math.random() * 2 + 1 + 's';
+            document.body.appendChild(raindrop);
+
+            raindrop.addEventListener('animationend', () => {
+                raindrop.remove();
+            });
+        };
+
+        setInterval(createRaindrop, 100);
+    </script>
+</body>
+</html>
